@@ -234,8 +234,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         FRIGATE_VERSION_ERROR_CUTOFF
     ):
         _LOGGER.error(
-            "Using a Frigate server (%s) with version %s < %s which is not "
-            "compatible -- you must upgrade: %s",
+            "检测到 Frigate 服务器 (%s) 版本 %s 小于最低支持版本 %s，"
+            "不兼容——请升级：%s",
             entry.data[CONF_URL],
             server_version,
             FRIGATE_VERSION_ERROR_CUTOFF,
@@ -397,7 +397,7 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
     """Migrate from v1 entry."""
 
     if config_entry.version == 1:
-        _LOGGER.debug("Migrating config entry from version '%s'", config_entry.version)
+        _LOGGER.debug("正在迁移配置条目，当前版本：'%s'", config_entry.version)
 
         data = {**config_entry.data}
         data[CONF_URL] = data.pop(CONF_HOST)
@@ -456,7 +456,7 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
 
         await er.async_migrate_entries(hass, config_entry.entry_id, update_unique_id)
         _LOGGER.debug(
-            "Migrating config entry to version '%s' successful", config_entry.version
+            "配置条目迁移成功，目标版本：'%s'", config_entry.version
         )
 
     return True

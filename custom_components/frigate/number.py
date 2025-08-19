@@ -62,7 +62,7 @@ class FrigateMotionContourArea(FrigateMQTTEntity, NumberEntity):
     """FrigateMotionContourArea class."""
 
     _attr_entity_category = EntityCategory.CONFIG
-    _attr_name = "Contour area"
+    _attr_name = "轮廓面积"
     _attr_native_min_value = MIN_CONTOUR_AREA
     _attr_native_max_value = MAX_CONTOUR_AREA
     _attr_native_step = 1
@@ -155,7 +155,7 @@ class FrigateMotionThreshold(FrigateMQTTEntity, NumberEntity):
     """FrigateMotionThreshold class."""
 
     _attr_entity_category = EntityCategory.CONFIG
-    _attr_name = "Threshold"
+    _attr_name = "阈值"
     _attr_native_min_value = MIN_THRESHOLD
     _attr_native_max_value = MAX_THRESHOLD
     _attr_native_step = 1
