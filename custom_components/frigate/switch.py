@@ -156,6 +156,12 @@ class FrigateSwitch(FrigateMQTTEntity, SwitchEntity):
             return "快照"
         elif self._descriptive_name == "improve_contrast":
             return "改善对比度"
+        elif self._descriptive_name == "detect":
+            return "检测"
+        elif self._descriptive_name == "motion":
+            return "移动侦测"
+        elif self._descriptive_name == "recordings":
+            return "录制"
         return f"{get_friendly_name(self._descriptive_name)}".title()
 
     @property
