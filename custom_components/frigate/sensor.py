@@ -164,6 +164,14 @@ class FrigateFpsSensor(
 
     @property
     def name(self) -> str:
+        if self._fps_type == "detection":
+            return "检测帧率"
+        elif self._fps_type == "process":
+            return "处理帧率"
+        elif self._fps_type == "camera":
+            return "摄像头帧率"
+        elif self._fps_type == "skipped":
+            return "跳帧率"
         return f"{self._fps_type} 帧率"
 
     @property
@@ -213,7 +221,7 @@ class FrigateStatusSensor(
     """Frigate Status Sensor class."""
 
     _attr_entity_category = EntityCategory.DIAGNOSTIC
-    _attr_name = "状态"
+    _attr_name = "运行状态"
 
     def __init__(
         self, coordinator: FrigateDataUpdateCoordinator, config_entry: ConfigEntry
@@ -352,6 +360,8 @@ class DetectorSpeedSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
+        if self._detector_name == "edgetpu":
+            return "Coral 推理速度"
         return f"{get_friendly_name(self._detector_name)} 推理速度"
 
     @property
@@ -397,7 +407,10 @@ class GpuLoadSensor(
     ) -> None:
         """Construct a GpuLoadSensor."""
         self._gpu_name = gpu_name
-        self._attr_name = f"{get_friendly_name(self._gpu_name)} GPU 负载"
+        if self._gpu_name == "Error-Gpu":
+            self._attr_name = "Error-Gpu GPU 负载"
+        else:
+            self._attr_name = f"{get_friendly_name(self._gpu_name)} GPU 负载"
         FrigateEntity.__init__(self, config_entry)
         CoordinatorEntity.__init__(self, coordinator)
         self._attr_entity_registry_enabled_default = False
@@ -499,6 +512,12 @@ class CameraFpsSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
+        if self._fps_type == "process":
+            return "处理帧率"
+        elif self._fps_type == "camera":
+            return "摄像头帧率"
+        elif self._fps_type == "skipped":
+            return "跳帧率"
         return f"{self._fps_type} 帧率"
 
     @property
@@ -673,6 +692,12 @@ class FrigateObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
+        if self._obj_name == "person":
+            return "人员数量"
+        elif self._obj_name == "all":
+            return "全部数量"
+        elif self._obj_name == "car":
+            return "汽车数量"
         return f"{get_friendly_name(self._obj_name)} 数量"
 
     @property
@@ -762,6 +787,12 @@ class FrigateActiveObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
+        if self._obj_name == "person":
+            return "人员活动数量"
+        elif self._obj_name == "all":
+            return "全部活动数量"
+        elif self._obj_name == "car":
+            return "汽车活动数量"
         return f"{get_friendly_name(self._obj_name)} 活动数量".title()
 
     @property

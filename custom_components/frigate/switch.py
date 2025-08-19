@@ -150,6 +150,12 @@ class FrigateSwitch(FrigateMQTTEntity, SwitchEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
+        if self._descriptive_name == "audio_detection":
+            return "音频检测"
+        elif self._descriptive_name == "snapshots":
+            return "快照"
+        elif self._descriptive_name == "improve_contrast":
+            return "改善对比度"
         return f"{get_friendly_name(self._descriptive_name)}".title()
 
     @property
