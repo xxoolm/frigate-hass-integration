@@ -237,7 +237,7 @@ class FrigateAudioSensor(FrigateMQTTEntity, BinarySensorEntity):
 class FrigateMotionSensor(FrigateMQTTEntity, BinarySensorEntity):
     """Frigate Motion Sensor class."""
 
-    _attr_name = "Motion"
+    _attr_name = "运动"
 
     def __init__(
         self,

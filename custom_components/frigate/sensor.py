@@ -164,7 +164,7 @@ class FrigateFpsSensor(
 
     @property
     def name(self) -> str:
-        return f"{self._fps_type} fps"
+        return f"{self._fps_type} 帧率"
 
     @property
     def unique_id(self) -> str:
@@ -260,7 +260,7 @@ class FrigateUptimeSensor(
     _attr_entity_category = EntityCategory.DIAGNOSTIC
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_device_class = SensorDeviceClass.DURATION
-    _attr_name = "Uptime"
+    _attr_name = "运行时间"
 
     def __init__(
         self, coordinator: FrigateDataUpdateCoordinator, config_entry: ConfigEntry
@@ -499,7 +499,7 @@ class CameraFpsSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{self._fps_type} fps"
+        return f"{self._fps_type} 帧率"
 
     @property
     def native_unit_of_measurement(self) -> str:
@@ -868,7 +868,7 @@ class CameraProcessCpuSensor(
         """Construct a CoralTempSensor."""
         self._cam_name = cam_name
         self._process_type = process_type
-        self._attr_name = f"{self._process_type} cpu usage"
+        self._attr_name = f"{self._process_type} CPU 使用率"
         FrigateEntity.__init__(self, config_entry)
         CoordinatorEntity.__init__(self, coordinator)
         self._attr_entity_registry_enabled_default = False
@@ -944,7 +944,7 @@ class FrigateRecognizedFaceSensor(FrigateMQTTEntity, SensorEntity):
     ) -> None:
         """Construct a FrigateRecognizedFaceSensor."""
         self._cam_name = cam_name
-        self._state = "Unknown"
+        self._state = "未知"
         self._frigate_config = frigate_config
         self._clear_state_callable: Callable | None = None
 
@@ -993,7 +993,7 @@ class FrigateRecognizedFaceSensor(FrigateMQTTEntity, SensorEntity):
     @callback
     def clear_recognized_face(self, _now: datetime.datetime) -> None:
         """Clears the current sensor state."""
-        self._state = "None"
+        self._state = "无"
         self.async_write_ha_state()
         self._clear_state_callable = None
 
@@ -1023,7 +1023,7 @@ class FrigateRecognizedFaceSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return "Last Recognized Face"
+        return "最近识别的人脸"
 
     @property
     def native_value(self) -> str:
@@ -1047,7 +1047,7 @@ class FrigateRecognizedPlateSensor(FrigateMQTTEntity, SensorEntity):
     ) -> None:
         """Construct a FrigateRecognizedPlateSensor."""
         self._cam_name = cam_name
-        self._state = "Unknown"
+        self._state = "未知"
         self._frigate_config = frigate_config
         self._clear_state_callable: Callable | None = None
 
@@ -1099,7 +1099,7 @@ class FrigateRecognizedPlateSensor(FrigateMQTTEntity, SensorEntity):
     @callback
     def clear_recognized_plate(self, _now: datetime.datetime) -> None:
         """Clears the current sensor state."""
-        self._state = "None"
+        self._state = "无"
         self.async_write_ha_state()
         self._clear_state_callable = None
 
@@ -1129,7 +1129,7 @@ class FrigateRecognizedPlateSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return "Last Recognized Plate"
+        return "最近识别的车牌"
 
     @property
     def native_value(self) -> str:
