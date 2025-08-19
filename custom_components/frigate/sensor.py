@@ -899,7 +899,14 @@ class CameraProcessCpuSensor(
         """Construct a CoralTempSensor."""
         self._cam_name = cam_name
         self._process_type = process_type
-        self._attr_name = f"{self._process_type} CPU 使用率"
+        if self._process_type == "capture":
+            self._attr_name = "视频捕获 CPU 使用率"
+        elif self._process_type == "detect":
+            self._attr_name = "对象检测 CPU 使用率"
+        elif self._process_type == "ffmpeg":
+            self._attr_name = "FFmpeg 进程 CPU 使用率"
+        else:
+            self._attr_name = f"{get_friendly_name(self._process_type)} CPU 使用率"
         FrigateEntity.__init__(self, config_entry)
         CoordinatorEntity.__init__(self, coordinator)
         self._attr_entity_registry_enabled_default = False

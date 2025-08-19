@@ -137,6 +137,10 @@ class FrigateObjectOccupancySensor(FrigateMQTTEntity, BinarySensorEntity):
         """Return the name of the sensor."""
         if self._obj_name == "person":
             return "人员占用"
+        elif self._obj_name == "all":
+            return "全部占用"
+        elif self._obj_name == "car":
+            return "汽车占用"
         return f"{get_friendly_name(self._obj_name)} 占用"
 
     @property
@@ -222,6 +226,10 @@ class FrigateAudioSensor(FrigateMQTTEntity, BinarySensorEntity):
             return "语音声音"
         elif self._audio_name == "yell":
             return "喊叫声"
+        elif self._audio_name == "scream":
+            return "尖叫声"
+        elif self._audio_name == "fire_alarm":
+            return "火警声"
         return f"{self._audio_name} 声音"
 
     @property
