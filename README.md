@@ -40,8 +40,8 @@ Easiest install is via [HACS](https://hacs.xyz/):
 - HACS 仅负责安装，不会自动“配置”集成。安装完成后需前往 `设置 > 集成` 添加 Frigate。
 - 需先安装并配置 `mqtt` 集成（其为 Frigate 工作所必需，且需手动配置）。
 
-For manual installation for advanced users, copy `custom_components/frigate` to
-your `custom_components` folder in Home Assistant.
+进阶用户的手动安装方式：将 `custom_components/frigate` 复制到 Home Assistant 的
+`custom_components` 目录下。
 
 完整安装与使用说明请参阅上游的 [Frigate 文档](https://docs.frigate.video/integrations/home-assistant/)。
 
