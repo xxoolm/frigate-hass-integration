@@ -135,7 +135,7 @@ class FrigateObjectOccupancySensor(FrigateMQTTEntity, BinarySensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._obj_name)} occupancy"
+        return f"{get_friendly_name(self._obj_name)} 占用"
 
     @property
     def is_on(self) -> bool:
@@ -216,7 +216,7 @@ class FrigateAudioSensor(FrigateMQTTEntity, BinarySensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{self._audio_name} sound"
+        return f"{self._audio_name} 声音"
 
     @property
     def is_on(self) -> bool:
@@ -237,7 +237,7 @@ class FrigateAudioSensor(FrigateMQTTEntity, BinarySensorEntity):
 class FrigateMotionSensor(FrigateMQTTEntity, BinarySensorEntity):
     """Frigate Motion Sensor class."""
 
-    _attr_name = "Motion"
+    _attr_name = "运动"
 
     def __init__(
         self,

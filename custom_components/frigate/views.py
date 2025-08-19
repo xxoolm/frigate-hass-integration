@@ -171,7 +171,7 @@ class FrigateProxyViewMixin:
                 client = get_client_for_config_entry(hass, config_entry)
 
         if client is None:
-            _LOGGER.warning("No Frigate client found for request '%s'. ", request.url)
+            _LOGGER.warning("请求 '%s' 未找到可用的 Frigate 客户端。", request.url)
             return {}
         return await client.get_auth_headers()
 
@@ -360,7 +360,7 @@ class NotificationsProxyView(FrigateProxyView):
             # Otherwise, permit only if notification event is not expired
             return now_datetime.timestamp() <= expiration_datetime.timestamp()
         except ValueError:
-            _LOGGER.warning("The event id %s does not have a valid format.", event_id)
+            _LOGGER.warning("事件 ID %s 的格式无效。", event_id)
             return False
 
 
@@ -420,7 +420,7 @@ class VodSegmentProxyView(FrigateProxyView):
         signature = request.query.get(SIGN_QUERY_PARAM)
 
         if signature is None:
-            _LOGGER.warning("Missing authSig query parameter on VOD segment request.")
+            _LOGGER.warning("VOD 分片请求缺少 authSig 查询参数。")
             return False
 
         try:
@@ -428,13 +428,13 @@ class VodSegmentProxyView(FrigateProxyView):
                 signature, secret, algorithms=["HS256"], options={"verify_iss": False}
             )
         except jwt.InvalidTokenError:
-            _LOGGER.warning("Invalid JWT token for VOD segment request.")
+            _LOGGER.warning("VOD 分片请求的 JWT 令牌无效。")
             return False
 
         # Check that the base path is the same as what was signed
         check_path = request.path.rsplit("/", maxsplit=1)[0]
         if not claims["path"].startswith(check_path):
-            _LOGGER.warning("%s does not start with %s", claims["path"], check_path)
+            _LOGGER.warning("%s 不以 %s 开头", claims["path"], check_path)
             return False
 
         return True

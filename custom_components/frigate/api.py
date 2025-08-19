@@ -364,7 +364,7 @@ class FrigateApiClient:
 
         except asyncio.TimeoutError as exc:
             _LOGGER.error(
-                "Timeout error fetching information from %s: %s",
+                "从 %s 获取信息超时：%s",
                 url,
                 exc,
             )
@@ -373,19 +373,19 @@ class FrigateApiClient:
         except aiohttp.ClientResponseError as exc:
             if exc.status == 401:
                 _LOGGER.error(
-                    "Unauthorized (401) error for URL %s: %s", url, exc.message
+                    "未授权 (401)，URL %s：%s", url, exc.message
                 )
                 raise FrigateApiClientError(
                     "Unauthorized access - check credentials."
                 ) from exc
             elif exc.status == 403:
-                _LOGGER.error("Forbidden (403) error for URL %s: %s", url, exc.message)
+                _LOGGER.error("禁止访问 (403)，URL %s：%s", url, exc.message)
                 raise FrigateApiClientError(
                     "Forbidden - insufficient permissions."
                 ) from exc
             else:
                 _LOGGER.error(
-                    "Client response error (%d) for URL %s: %s",
+                    "客户端响应错误 (%d)，URL %s：%s",
                     exc.status,
                     url,
                     exc.message,
@@ -393,14 +393,14 @@ class FrigateApiClient:
                 raise FrigateApiClientError from exc
         except (KeyError, TypeError) as exc:
             _LOGGER.error(
-                "Error parsing information from %s: %s",
+                "解析 %s 返回信息时出错：%s",
                 url,
                 exc,
             )
             raise FrigateApiClientError from exc
         except (aiohttp.ClientError, socket.gaierror) as exc:
             _LOGGER.error(
-                "Error fetching information from %s: %s",
+                "从 %s 获取信息时出错：%s",
                 url,
                 exc,
             )

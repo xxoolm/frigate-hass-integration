@@ -39,7 +39,7 @@ class FrigateContainerUpdate(
 ):
     """Frigate container update."""
 
-    _attr_name = "Server"
+    _attr_name = "服务器"
 
     def __init__(
         self,
