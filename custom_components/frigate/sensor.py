@@ -982,7 +982,7 @@ class FrigateRecognizedFaceSensor(FrigateMQTTEntity, SensorEntity):
     ) -> None:
         """Construct a FrigateRecognizedFaceSensor."""
         self._cam_name = cam_name
-        self._state = "未知"
+        self._state = "未识别"
         self._frigate_config = frigate_config
         self._clear_state_callable: Callable | None = None
 
@@ -1031,7 +1031,7 @@ class FrigateRecognizedFaceSensor(FrigateMQTTEntity, SensorEntity):
     @callback
     def clear_recognized_face(self, _now: datetime.datetime) -> None:
         """Clears the current sensor state."""
-        self._state = "无"
+        self._state = "无识别记录"
         self.async_write_ha_state()
         self._clear_state_callable = None
 
@@ -1085,7 +1085,7 @@ class FrigateRecognizedPlateSensor(FrigateMQTTEntity, SensorEntity):
     ) -> None:
         """Construct a FrigateRecognizedPlateSensor."""
         self._cam_name = cam_name
-        self._state = "未知"
+        self._state = "未识别"
         self._frigate_config = frigate_config
         self._clear_state_callable: Callable | None = None
 
@@ -1137,7 +1137,7 @@ class FrigateRecognizedPlateSensor(FrigateMQTTEntity, SensorEntity):
     @callback
     def clear_recognized_plate(self, _now: datetime.datetime) -> None:
         """Clears the current sensor state."""
-        self._state = "无"
+        self._state = "无识别记录"
         self.async_write_ha_state()
         self._clear_state_callable = None
 

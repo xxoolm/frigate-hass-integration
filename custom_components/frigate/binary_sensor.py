@@ -223,7 +223,7 @@ class FrigateAudioSensor(FrigateMQTTEntity, BinarySensorEntity):
     def name(self) -> str:
         """Return the name of the sensor."""
         if self._audio_name == "speech":
-            return "语音声音"
+            return "语音"
         elif self._audio_name == "yell":
             return "喊叫声"
         elif self._audio_name == "scream":
