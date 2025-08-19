@@ -213,7 +213,7 @@ class FrigateStatusSensor(
     """Frigate Status Sensor class."""
 
     _attr_entity_category = EntityCategory.DIAGNOSTIC
-    _attr_name = "Status"
+    _attr_name = "状态"
 
     def __init__(
         self, coordinator: FrigateDataUpdateCoordinator, config_entry: ConfigEntry
@@ -352,7 +352,7 @@ class DetectorSpeedSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._detector_name)} inference speed"
+        return f"{get_friendly_name(self._detector_name)} 推理速度"
 
     @property
     def native_value(self) -> int | None:
@@ -397,7 +397,7 @@ class GpuLoadSensor(
     ) -> None:
         """Construct a GpuLoadSensor."""
         self._gpu_name = gpu_name
-        self._attr_name = f"{get_friendly_name(self._gpu_name)} gpu load"
+        self._attr_name = f"{get_friendly_name(self._gpu_name)} GPU 负载"
         FrigateEntity.__init__(self, config_entry)
         CoordinatorEntity.__init__(self, coordinator)
         self._attr_entity_registry_enabled_default = False
@@ -574,7 +574,7 @@ class CameraSoundSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return "sound level"
+        return "声音强度"
 
     @property
     def native_unit_of_measurement(self) -> Any:
@@ -673,7 +673,7 @@ class FrigateObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._obj_name)} count"
+        return f"{get_friendly_name(self._obj_name)} 数量"
 
     @property
     def native_value(self) -> int:
@@ -683,7 +683,7 @@ class FrigateObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def native_unit_of_measurement(self) -> str:
         """Return the native unit of measurement of the sensor."""
-        return "objects"
+        return "个"
 
     @property
     def icon(self) -> str:
@@ -762,7 +762,7 @@ class FrigateActiveObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._obj_name)} active count".title()
+        return f"{get_friendly_name(self._obj_name)} 活动数量".title()
 
     @property
     def native_value(self) -> int:
@@ -772,7 +772,7 @@ class FrigateActiveObjectCountSensor(FrigateMQTTEntity, SensorEntity):
     @property
     def native_unit_of_measurement(self) -> str:
         """Return the native unit of measurement of the sensor."""
-        return "objects"
+        return "个"
 
     @property
     def icon(self) -> str:
@@ -822,7 +822,7 @@ class DeviceTempSensor(
     @property
     def name(self) -> str:
         """Return the name of the sensor."""
-        return f"{get_friendly_name(self._name)} temperature"
+        return f"{get_friendly_name(self._name)} 温度"
 
     @property
     def native_value(self) -> float | None:
