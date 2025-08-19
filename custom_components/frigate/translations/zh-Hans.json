@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "用于访问 Frigate 的 URL (例如 `http://frigate:5000/`)\n\n如果您在 HassOS 上使用插件，URL 应该是 `http://ccab4aaf-frigate:5000/`\n\nHome Assistant 需要访问端口 5000 (api) 和 8554/8555 (rtsp, webrtc) 以使用所有功能。\n\n该集成将设置传感器、摄像头和媒体浏览器功能。\n\n传感器:\n- 用于监控 frigate 性能的统计数据\n- 所有区域和摄像头的物体计数\n\n摄像头:\n- 每个摄像头最后一次检测到物体时的图像摄像头\n- 支持流媒体的摄像头实体\n\n媒体浏览器:\n- 带有缩略图的丰富 UI，用于浏览事件剪辑\n- 按月、日、摄像头、时间浏览 24/7 录制的丰富 UI\n\nAPI:\n- 带有公共端点的 Notification API，用于通知中的图像",
+        "data": {
+          "url": "URL",
+          "validate_ssl": "验证 SSL",
+          "username": "用户名 (可选)",
+          "password": "密码 (可选)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "连接失败",
+      "invalid_url": "无效的 URL"
+    },
+    "abort": {
+      "already_configured": "设备已配置"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "enable_webrtc": "使用 Frigate 原生 WebRTC 支持",
+          "rtsp_url_template": "RTSP URL 模板 (参见文档)",
+          "media_browser_enable": "启用媒体浏览器",
+          "notification_proxy_enable": "启用未经身份验证的通知事件代理",
+          "notification_proxy_expire_after_seconds": "在多少秒后禁止未经身份验证的通知访问 (0=永不)"
+        }
+      }
+    },
+    "abort": {
+      "only_advanced_options": "高级模式已禁用，且只有高级选项"
+    }
+  }
+}
